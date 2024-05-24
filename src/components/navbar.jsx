@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import NavLink from "./navLink";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
   // const menu link url and tittle
@@ -28,6 +29,58 @@ const Navbar = () => {
 
   // membuat state untuk menu hamburger open dan setopen
   const [open, setOpen] = useState(false);
+  const topVariants = {
+    closed: {
+      rotate: 0,
+    },
+    opened: {
+      rotate: 45,
+      backgroundColor: "rgb(255,255,255)",
+    },
+  };
+  const centerVariants = {
+    closed: {
+      opacity: 1,
+    },
+    opened: {
+      opacity: 0,
+    },
+  };
+
+  const bottomVariants = {
+    closed: {
+      opacity: 1,
+    },
+    opened: {
+      rotate: -45,
+      backgroundColor: "rgb(255,255,255)",
+    },
+  };
+
+  // animation on list menu at hamburger
+  const listVariants = {
+    closed: {
+      x: "100vw",
+    },
+    opened: {
+      x: 0,
+      transition: {
+        when: "beforeChildren",
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const listItemVariants = {
+    closed: {
+      x: -10,
+      opacity: 0,
+    },
+    opened: {
+      x: 0,
+      opacity: 1,
+    },
+  };
 
   return (
     <div className="h-full flex items-center justify-between px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 text-xl">
@@ -109,22 +162,41 @@ const Navbar = () => {
           // membuat saat onclik menu muncul
           onClick={() => setOpen((prev) => !prev)}
         >
-          <div className="w-10 h-1 bg-white rounded"></div>
-          <div className="w-10 h-1 bg-white rounded"></div>
-          <div className="w-10 h-1 bg-white rounded"></div>
+          {/* mengubah animasi garis menjadi tanda silang warna putih */}
+          <motion.div
+            variants={topVariants}
+            animate={open ? "opened" : "closed"}
+            className="w-10 h-1 bg-black rounded origin-left"
+          ></motion.div>
+          <motion.div
+            variants={centerVariants}
+            animate={open ? "opened" : "closed"}
+            className="w-10 h-1 bg-black rounded"
+          ></motion.div>
+          <motion.div
+            variants={bottomVariants}
+            animate={open ? "opened" : "closed"}
+            className="w-10 h-1 bg-black rounded origin-left"
+          ></motion.div>
         </button>
         {/* menu list */}
         {open && (
-          <div className="absolute top-0 left-0 w-screen h-screen text-white bg-black flex flex-col gap-8 text-4xl items-center justify-center">
+          <motion.div
+            variants={listVariants}
+            initial="closed"
+            animate="opened"
+            className="absolute top-0 left-0 w-screen h-screen text-white bg-black flex flex-col gap-8 text-4xl items-center justify-center z-40"
+          >
+            {/* animation menu list */}
             {links.map((link) => (
-              <Link
-                href={link.url}
+              <motion.div
+                variants={listItemVariants}
                 key={link.title}
               >
-                {link.title}
-              </Link>
+                <Link href={link.url}>{link.title}</Link>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         )}
       </div>
     </div>
