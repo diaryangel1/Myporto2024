@@ -9,7 +9,8 @@ const NavLink = ({ link }) => {
   console.log(pathName);
   return (
     <Link
-      className=""
+      // jika pathName sma dengan juga link url maka background jadi hitam
+      className={`rounded p-1 ${pathName === link.url && "bg-black text-white"}`}
       href={link.url}
     >
       {link.title}
