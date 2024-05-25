@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 
 export default function Home() {
   return (
+    // agar home page ada transisi
     <motion.div
       className="h-full"
       initial={{ y: "-200vh" }}
