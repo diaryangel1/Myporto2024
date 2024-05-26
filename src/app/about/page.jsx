@@ -1,9 +1,24 @@
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useInView, useScroll } from "framer-motion";
 import Image from "next/image";
+import Brain from "../../components/brain";
 
 const AboutPage = () => {
+  // scroll brain function
+
+  const containerRef = useRef();
+
+  const { scrollYProgress } = useScroll({ container: containerRef });
+
+  // make viewport useInView for animation transition  of each Tittle like mytools etc.
+  const skillRef = useRef();
+  const isSkillRefInView = useInView(skillRef);
+
+  //animation for experience
+  const experienceRef = useRef();
+  const isExperienceRefInView = useInView(experienceRef);
+
   return (
     <motion.div
       className="h-full"
@@ -12,14 +27,20 @@ const AboutPage = () => {
       transition={{ duration: 1.2 }}
     >
       {/* CONTAINER */}
-      <div className="h-full overflow-scroll">
+      <div
+        className="h-full overflow-scroll lg:flex"
+        ref={containerRef}
+      >
         {/* TEXT CONTAINER */}
-        <div className="p-4 sm:p-8 md:p-12 lg:p-20 xl:p-48 flex flex-col gap-24 md:gap-32 lg:gap-48 xl:gap-64">
+        <div className="p-4 sm:p-8 md:p-12 lg:p-20 xl:p-48 flex flex-col gap-24 md:gap-32 lg:gap-48 xl:gap-64 lg:w-2/3 lg:pr-0 xl:1/2">
           {/* BIO CONTAINER */}
           <div className="flex flex-col gap-12 justify-center">
             {/* biography title */}
             <h1 className="text-2xl font-bold">BIOGRAPHY</h1>
-            <p className="text-lg">I am who loves creating visually stunning and user-friendly websites. I have a strong passion for front-end development and am always looking for new ways to deliver high-quality results. I am also a designer with a creative background, and I enjoy working with clients to bring their visions to life.</p>
+            <p className="text-lg">
+              I am who loves creating visually stunning and user-friendly websites. I have a strong passion for front-end development and am always looking for new ways to deliver high-quality results. I am also a designer with a creative
+              background, and I enjoy working with clients to bring their visions to life.
+            </p>
             <span className="italic">Thank you for taking the time to read through my portfolio, and I look forward to connecting with you soon!</span>
             {/* signature svg */}
             <div className="self-end">
@@ -59,11 +80,25 @@ const AboutPage = () => {
             </motion.svg>
           </div>
           {/* SKILLS CONTAINER / mytools*/}
-          <div className="flex flex-col gap-12 justify-center">
+          <div
+            className="flex flex-col gap-12 justify-center"
+            ref={skillRef}
+          >
             {/* mytools */}
-            <h1 className="text-2xl font-bold">MyTools</h1>
+            <motion.h1
+              initial={{ x: "-300px" }}
+              animate={isSkillRefInView ? { x: 0 } : {}}
+              transition={{ delay: 0.2 }}
+              className="text-2xl font-bold"
+            >
+              MyTools
+            </motion.h1>
             {/* Mytools list */}
-            <div className="flex flex-wrap gap-4">
+            <motion.div
+              initial={{ x: "-300px" }}
+              animate={isSkillRefInView ? { x: 0 } : {}}
+              className="flex flex-wrap gap-4"
+            >
               <div className="rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">React.js</div>
               <div className="rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">Next.js</div>
               <div className="rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">Tailwind CSS</div>
@@ -73,7 +108,7 @@ const AboutPage = () => {
               <div className="rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">Adobe Photoshop</div>
               <div className="rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">Adobe Premiere</div>
               <div className="rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black">Adobe Ilustrator</div>
-            </div>
+            </motion.div>
             {/* mytools scrool svg */}
             <motion.svg
               initial={{ opacity: 0.2, y: 0 }}
@@ -103,93 +138,102 @@ const AboutPage = () => {
             </motion.svg>
           </div>
           {/* EXPERIENCE CONTAINER */}
-          <div className="lex flex-col gap-12 justify-center pb-48">
-            {/* experience title */}
-            <h1 className="text-2xl font-bold">MyExperience</h1>
-
-            {/* experience list */}
-            <div className="">
-              {/* experience list item */}
+          <div
+            className="flex flex-col gap-12 justify-center pb-48 mb-20"
+            ref={experienceRef}
+          >
+            {/* EXPERIENCE TITLE */}
+            <motion.h1
+              className="font-bold text-2xl"
+              initial={{ x: "-300px" }}
+              animate={isExperienceRefInView ? { x: "0" } : {}}
+              transition={{ delay: 0.2 }}
+            >
+              EXPERIENCE
+            </motion.h1>
+            {/* EXPERIENCE LIST */}
+            <motion.div
+              className=""
+              nitial={{ x: "-300px" }}
+              animate={isExperienceRefInView ? { x: "0" } : {}}
+            >
+              {/* EXPERIENCE LIST ITEM */}
               <div className="flex justify-between h-48">
-                {/* LEFT side FIRST*/}
-                <div className="w-1/3 bg-red-200">
-                  {/* job tittle */}
-                  <div className="rounded-b-lg rounded-s-lg font-semibold p-3 bg-white ">Frontend Developer</div>
-                  {/* job desc */}
-                  <div className="text-sm p-3 italic">I am a frontend at creative agency and company</div>
-                  {/* job date */}
-                  <div className="text-sm p-3 font-semibold text-red-400">2022 - Present</div>
-                  {/* company name */}
-                  <div className="text-sm p-1 rounded bg-white font-semibold w-fit">Creative Agency</div>
+                {/* LEFT 1 */}
+                <div className="w-1/3 ">
+                  {/* JOB TITLE */}
+                  <div className="bg-white p-3 font-semibold rounded-b-lg rounded-s-lg">Front-end Developer</div>
+                  {/* JOB DESC */}
+                  <div className="p-3 text-sm italic">I led web development, offering expertise in web frameworks. </div>
+                  {/* JOB DATE */}
+                  <div className="p-3 text-red-400 text-sm font-semibold">2024 - Present</div>
+                  {/* JOB COMPANY */}
+                  <div className="p-1 rounded bg-white text-sm font-semibold w-fit">Creative agency</div>
                 </div>
-
-                {/* CENTER graphic line visual vertical 1 */}
-                <div className="w-1/6 ">
-                  {/* line */}
+                {/* CENTER */}
+                <div className="w-1/6 flex justify-center">
+                  {/* LINE */}
                   <div className="w-1 h-full bg-gray-600 rounded relative">
-                    {/* line circle */}
-                    <div className="absolute w-5 h-5 ring-4 ring-red-400 bg-white rounded-full -left-2"></div>
+                    {/* LINE CIRCLE */}
+                    <div className="absolute w-5 h-5 rounded-full ring-4 ring-red-400 bg-white -left-2"></div>
                   </div>
                 </div>
-
-                {/* right side */}
-                <div className="w-1/3 bg-red-200"></div>
+                {/* RIGHT = empty*/}
+                <div className="w-1/3 "></div>
               </div>
-              <div>
-                {/* LEFT side  SECOND*/}
-                <div></div>
-
-                {/* CENTER graphic line visual vertical */}
-                <div>
-                  {/* line */}
-                  <div>
-                    {/* line circle */}
-                    <div></div>
-                  </div>
-                </div>
-
-                {/* right side */}
-                <div className="w-1/3">
-                  {/* job tittle */}
-                  <div className="rounded-b-lg rounded-s-lg font-semibold p-3 bg-white">Frontend Developer</div>
-                  {/* job desc */}
-                  <div className="p-3 text-sm italic">I am a frontend at creative agency and company</div>
-                  {/* job date */}
-                  <div className="p-3 text-red-400 text-sm font-semibold">2022 - Present</div>
-                  {/* company name */}
-                  <div className="p-1 rounded bg-white text-sm font-semibold w-fit">Creative Agency</div>
-                </div>
-              </div>
-
+              {/* EXPERIENCE LIST ITEM */}
               <div className="flex justify-between h-48">
-                {/* LEFT side THIRD*/}
-                <div className="w-1/3">
-                  {/* job tittle */}
-                  <div className="rounded-b-lg rounded-s-lg font-semibold p-3 bg-white">Frontend Developer</div>
-                  {/* job desc */}
-                  <div className="p-3 text-sm italic">I am a frontend at creative agency and company</div>
-                  {/* job date */}
-                  <div className="p-3 text-red-400 text-sm font-semibold">2022 - Present</div>
-                  {/* company name */}
-                  <div className="text-sm">Creative Agency</div>
-                </div>
-
-                {/* CENTER graphic line visual vertical */}
-                <div>
-                  {/* line */}
-                  <div>
-                    {/* line circle */}
-                    <div></div>
+                {/* LEFT 2 = empth   */}
+                <div className="w-1/3 "></div>
+                {/* CENTER */}
+                <div className="w-1/6 flex justify-center">
+                  {/* LINE */}
+                  <div className="w-1 h-full bg-gray-600 rounded relative">
+                    {/* LINE CIRCLE */}
+                    <div className="absolute w-5 h-5 rounded-full ring-4 ring-red-400 bg-white -left-2"></div>
                   </div>
                 </div>
-
-                {/* right side */}
-                <div></div>
+                {/* RIGHT */}
+                <div className="w-1/3 ">
+                  {/* JOB TITLE */}
+                  <div className="bg-white p-3 font-semibold rounded-b-lg rounded-s-lg">Junior React Developer</div>
+                  {/* JOB DESC */}
+                  <div className="p-3 text-sm italic">I spearheaded React-based application development, leveraging advanced skills. </div>
+                  {/* JOB DATE */}
+                  <div className="p-3 text-red-400 text-sm font-semibold">2019 - 2024 </div>
+                  {/* JOB COMPANY */}
+                  <div className="p-1 rounded bg-white text-sm font-semibold w-fit">Bandung Tech.</div>
+                </div>
               </div>
-            </div>
+              {/* EXPERIENCE LIST ITEM */}
+              <div className="flex justify-between h-48">
+                {/* LEFT 3 = baris bawah */}
+                <div className="w-1/3 ">
+                  {/* JOB TITLE */}
+                  <div className="bg-white p-3 font-semibold rounded-b-lg rounded-s-lg">Freelancer </div>
+                  {/* JOB DESC */}
+                  <div className="p-3 text-sm italic">I provided web solutions, applying a range of technologies to address client requirements. </div>
+                  {/* JOB DATE */}
+                  <div className="p-3 text-red-400 text-sm font-semibold">2010 - 2019 </div>
+                </div>
+                {/* CENTER */}
+                <div className="w-1/6 flex justify-center">
+                  {/* LINE */}
+                  <div className="w-1 h-full bg-gray-600 rounded relative">
+                    {/* LINE CIRCLE */}
+                    <div className="absolute w-5 h-5 rounded-full ring-4 ring-red-400 bg-white -left-2"></div>
+                  </div>
+                </div>
+                {/* RIGHT */}
+                <div className="w-1/3 "></div>
+              </div>
+            </motion.div>
           </div>
         </div>
         {/* SVG CONTAINER */}
+        <div className="hidden sticky top-0 z-30 lg:block w-1/3 xl:1/2">
+          <Brain scrollYProgress={scrollYProgress} />
+        </div>
       </div>
     </motion.div>
   );
