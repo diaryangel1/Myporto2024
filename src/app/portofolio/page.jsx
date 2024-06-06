@@ -56,11 +56,8 @@ const PortofolioPage = () => {
         ref={ref}
       >
         <div className="w-screen h-[calc(100vh-6rem)] flex flex-col gap-5 items-center justify-center">
-          <div
-            className="text-center"
-            style={{ fontSize: "12rem" }}
-          >
-            My Works
+          <div className="text-center">
+            <h1 className="font-semibold xs:text-6xl sm:text-6xl md:text-8xl xl:text-12xl">My Works</h1>
           </div>
           <motion.svg
             initial={{ opacity: 0.2, y: 0 }}
