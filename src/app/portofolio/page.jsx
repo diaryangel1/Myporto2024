@@ -99,7 +99,7 @@ const PortofolioPage = () => {
               >
                 <div className="flex flex-col gap-4 text-white">
                   <h1 className="text-xl font-bold md:text-2xl lg:text-4xl xl:text-6xl">{item.title}</h1>
-                  <div className="relative w-70 h-46 md:w-86 md:h-54 lg:w-[400px] lg:h-[250px] xl:w-[500px] xl:h-[320px]">
+                  <div className="relative xs:w-[200px] xs:h-[150px] s:w-[300px] s:h-[150px] md:w-[400px] md:h-[250px] lg:w-[400px] lg:h-[250px] xl:w-[500px] xl:h-[320px]">
                     <Image
                       src={item.img}
                       alt=""
