@@ -80,11 +80,18 @@ const ContactPage = () => {
           className="h-3/4 xs:h-3/4 sm:h-3/4 lg:h-full lg:w-1/2 bg-red-50 rounded-xl text-xl flex flex-col gap-6 justify-center p-24 xs:p-10 xs:gap-5 shadow-lg shadow-slate-500"
         >
           <span>Dear Sena Dev,</span>
-          <textarea
+          {/* <textarea
             rows={6}
             className="bg-transparent border-b-2 border-b-black outline-none resize-none"
             // coonect with emailJS
             name="user_message"
+          /> */}
+          <textarea
+            rows={6}
+            className={`bg-transparent border-b-2 border-b-black outline-none resize-none ${isFocused ? "fixed bottom-10 left-10 right-10" : ""}`}
+            name="user_message"
+            onFocus={() => setIsFocused(true)}
+            onBlur={() => setIsFocused(false)}
           />
           <span>My mail address is:</span>
           <input
