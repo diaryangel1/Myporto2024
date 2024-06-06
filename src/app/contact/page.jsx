@@ -80,7 +80,7 @@ const ContactPage = () => {
         <form
           onSubmit={sendEmail}
           ref={form}
-          className="h-3/4 xs:h-3/4 sm:h-3/4 lg:h-full lg:w-1/2 bg-red-50 rounded-xl text-xl flex flex-col gap-6 justify-center p-24 xs:p-10 xs:gap-5 shadow-lg shadow-slate-500"
+          className="h-3/4 xs:h-3/4 sm:h-3/4 lg:h-full lg:w-1/2 bg-red-50 rounded-xl text-xl flex flex-col gap-6 justify-center p-24 xs:p-10 xs:gap-7 shadow-lg shadow-slate-500"
         >
           <label htmlFor="user_message">Dear Sena Dev,</label>
           <textarea
