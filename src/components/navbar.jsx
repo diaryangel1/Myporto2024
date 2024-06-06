@@ -105,7 +105,7 @@ const Navbar = () => {
       </div>
       {/* icon medsos */}
       <div className="hidden md:flex gap-4 w-1/3">
-        <Link href="/">
+        <Link href="https://github.com/diaryangel1">
           <Image
             src="/github.png"
             alt="logo"
@@ -121,7 +121,7 @@ const Navbar = () => {
             height={24}
           />
         </Link>
-        <Link href="#">
+        <Link href="https://www.instagram.com/diaryangel717/">
           <Image
             src="/instagram.png"
             alt="logo"
@@ -129,7 +129,7 @@ const Navbar = () => {
             height={24}
           />
         </Link>
-        <Link href="#">
+        <Link href="https://www.facebook.com/senna.feliz/">
           <Image
             src="/facebook.png"
             alt="logo"
@@ -145,7 +145,7 @@ const Navbar = () => {
             height={24}
           />
         </Link>
-        <Link href="#">
+        <Link href="https://www.linkedin.com/in/sena-jumena-00b225220/">
           <Image
             src="/linkedin.png"
             alt="logo"
