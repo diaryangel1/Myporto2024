@@ -77,11 +77,11 @@ const ContactPage = () => {
         <form
           onSubmit={sendEmail}
           ref={form}
-          className="h-2/3 lg:h-full lg:w-1/2 bg-red-50 rounded-xl text-xl flex flex-col gap-6 justify-center p-24 shadow-md"
+          className="h-2/3 sm:h-full lg:h-full lg:w-1/2 bg-red-50 rounded-xl text-xl flex flex-col gap-6 justify-center p-24 shadow-md"
         >
           <span>Dear Sena Dev,</span>
           <textarea
-            rows={4}
+            rows={6}
             className="bg-transparent border-b-2 border-b-black outline-none resize-none"
             // coonect with emailJS
             name="user_message"
