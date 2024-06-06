@@ -42,7 +42,7 @@ const ContactPage = () => {
     >
       <div className="h-full flex flex-col lg:flex-row px-4 sm:px-2 md:px-12 lg:px-20 xl:px-48">
         {/* text container */}
-        <div className="h-1/2 lg:h-full lg:w-1/2 flex items-center justify-center text-8xl text-center  ">
+        <div className="h-1/2 xs:h-1/4 lg:h-full lg:w-1/2 flex items-center justify-center text-8xl text-center  ">
           <div>
             {text.split("").map((letter, index) => (
               <motion.span
@@ -82,7 +82,7 @@ const ContactPage = () => {
           <span>Dear Sena Dev,</span>
           <textarea
             rows={6}
-            className="bg-transparent border-b-2 border-b-black outline-none "
+            className="bg-transparent border-b-2 border-b-black outline-none resize-none"
             // coonect with emailJS
             name="user_message"
           />
