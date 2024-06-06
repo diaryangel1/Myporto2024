@@ -82,16 +82,18 @@ const ContactPage = () => {
           ref={form}
           className="h-3/4 xs:h-3/4 sm:h-3/4 lg:h-full lg:w-1/2 bg-red-50 rounded-xl text-xl flex flex-col gap-6 justify-center p-24 xs:p-10 xs:gap-5 shadow-lg shadow-slate-500"
         >
-          <span>Dear Sena Dev,</span>
+          <label htmlFor="user_message">Dear Sena Dev,</label>
           <textarea
             rows={6}
             className="bg-transparent border-b-2 border-b-black outline-none resize-none"
             // coonect with emailJS
             name="user_message"
+            id="user_message"
           />
-          <span>My mail address is:</span>
+          <label htmlFor="user_email">My mail address is:</label>
           <input
             name="user_email"
+            id="user_email"
             type="text"
             className="bg-transparent border-b-2 border-b-black outline-none "
           />
