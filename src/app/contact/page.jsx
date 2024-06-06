@@ -80,25 +80,30 @@ const ContactPage = () => {
         <form
           onSubmit={sendEmail}
           ref={form}
-          className="h-3/4 xs:h-3/4 sm:h-3/4 lg:h-full lg:w-1/2 bg-red-50 rounded-xl text-xl flex flex-col gap-6 justify-center p-24 xs:p-10 xs:gap-7 shadow-lg shadow-slate-500"
+          className="h-3/4 xs:h-3/4 sm:h-3/4 lg:h-full lg:w-1/2 bg-red-50 rounded-xl text-xl flex flex-col gap-4 justify-center p-24 xs:p-10 xs:gap-7 shadow-lg shadow-slate-500"
         >
           <label htmlFor="user_message">Dear Sena Dev,</label>
           <textarea
-            rows={6}
-            className="bg-transparent border-b-2 border-b-black outline-none resize-none"
+            rows={3}
+            className="bg-transparent border-b-2 border-b-black outline-none resize-none p-2"
             // coonect with emailJS
             name="user_message"
             id="user_message"
           />
-          <label htmlFor="user_email">My mail address is:</label>
+          <label
+            htmlFor="user_email"
+            className="my-2"
+          >
+            My mail address is:
+          </label>
           <input
             name="user_email"
             id="user_email"
             type="text"
-            className="bg-transparent border-b-2 border-b-black outline-none "
+            className="bg-transparent border-b-2 border-b-black outline-none p-4"
           />
           <span>Regards</span>
-          <button className="bg-purple-200 text-gray-600 p-4  hover:bg-slate-500 hover:text-white">Send</button>
+          <button className="bg-purple-200 text-gray-600 p-2  hover:bg-slate-500 hover:text-white">Send</button>
 
           {/* condition email success or not */}
           {success && <span className="text-green-500">Your email has been sent!</span>}
